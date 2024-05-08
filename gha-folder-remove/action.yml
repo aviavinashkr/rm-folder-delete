@@ -27,12 +27,14 @@ runs:
         $organization = "${{ inputs.organization }}"
         $pat = "${{ inputs.pat }}"
         $folder_name = "${{ inputs.folder_name }}"
-        #git config --global user.email "action@github.com"
-        #git config --global user.name "GitHub Action"
+        
         git config --global init.defaultBranch main
         git init
         git clone "https://bogususer:$pat@github.com/$organization/$repo_name.git"
         $repo_name
-        git rm -r --cached $folder_name
-        git commit -m "Removed folder from repository"
-        git push origin main
+        
+        $repodeleteuri = "https://api.github.com/repos/$organization/$repo_name/contents/$folder_name"
+        Invoke-RestMethod -Uri $repodeleteuri -Method Delete -Headers @{Authorization = "token $pat"}
+        # git rm -r --cached $folder_name
+        # git commit -m "Removed folder from repository"
+        # git push origin main
