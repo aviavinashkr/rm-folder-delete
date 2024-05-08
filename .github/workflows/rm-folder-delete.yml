@@ -30,3 +30,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Remove folder
+        uses: ./gha-folder-remove/
+        with:
+          organization: "aviavinashkr"
+          repo_name: "rm-folder-delete"
+          pat: ${{ secrets.PAT_TOKEN }}
+          folder_name: "src_vars"
