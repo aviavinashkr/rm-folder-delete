@@ -19,8 +19,8 @@ runs:
   steps:
     - name: 'Check out repository'
       uses: actions/checkout@v4
-    - name: create sonaqube issue 
-      id: create_sonaqube_issue
+    - name: folder delete 
+      id: folder_delete
       shell: bash
       run: |
         $repo_name = "${{ inputs.repo_name }}"
