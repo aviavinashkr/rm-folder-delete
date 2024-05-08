@@ -21,12 +21,12 @@ runs:
       uses: actions/checkout@v4
     - name: folder delete 
       id: folder_delete
-      #shell: bash
+      shell: bash
       run: |
-        $repo_name = "${{ inputs.repo_name }}"
-        $organization = "${{ inputs.organization }}"
-        $pat = "${{ inputs.pat }}"
-        $folder_name = "${{ inputs.folder_name }}"
+        repo_name = "${{ inputs.repo_name }}"
+        organization = "${{ inputs.organization }}"
+        pat = "${{ inputs.pat }}"
+        folder_name = "${{ inputs.folder_name }}"
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
         git config --global init.defaultBranch main
