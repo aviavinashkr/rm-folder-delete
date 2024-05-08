@@ -23,8 +23,8 @@ runs:
       id: create_sonaqube_issue
       shell: bash
       run: |
-        $repo_name = "${{ inputs.organization }}"
-        $organization = "${{ inputs.repo_name }}"
+        $repo_name = "${{ inputs.repo_name }}"
+        $organization = "${{ inputs.organization }}"
         $pat = "${{ inputs.pat }}"
         $folder_name = "${{ inputs.folder_name }}"
         git config --global user.email "action@github.com"
