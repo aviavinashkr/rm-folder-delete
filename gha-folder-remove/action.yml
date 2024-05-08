@@ -1,1 +1,39 @@
-txt
+name: "Remove a folder from a specific repository"
+description: "Remove a folder from a specific repository"
+author: "Avinash Kumar"
+inputs:  
+  organization:
+    description: "Organization name of the repository"
+    required: true
+  repo_name:
+    description: "Name of the repository"
+    required: true
+  pat:
+    description: "pat token"
+    required: true
+  folder_name:
+    description: "folder Name of the repository"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: 'Check out repository'
+      uses: actions/checkout@v4
+    - name: create sonaqube issue 
+      id: create_sonaqube_issue
+      shell: bash
+      run: |
+        $repo_name = "${{ inputs.organization }}"
+        $organization = "${{ inputs.repo_name }}"
+        $pat = "${{ inputs.pat }}"
+        $folder_name = "${{ inputs.folder_name }}"
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git config --global init.defaultBranch main
+        git init
+        git clone "https://bogususer:$pat@github.com/$organization/$repo_name.git"
+        $repo_name
+        git rm -r --cached $folder_name
+        git commit -m "Removed folder from repository"
+        git push origin main
+
