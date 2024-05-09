@@ -33,8 +33,8 @@ runs:
         git config --global init.defaultBranch main
         git init
         git clone "https://bogususer:${{inputs.pat}}@github.com/$organization/$repo_name.git"
-        ls ./$repo_name 
-        cd ./$repo_name/$folder_name
+        ls ./$repo_name
+        cd ./$folder_name
         Get-ChildItem -Path "./" -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
 
         # git rm -r --cached $folder_name
