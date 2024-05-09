@@ -34,9 +34,13 @@ runs:
         git init
         git clone "https://bogususer:${{inputs.pat}}@github.com/$organization/$repo_name.git"
         ls ./$repo_name
+        try {
         cd ./$repo_name/$folder_name
         Get-ChildItem -Path "./" -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
-
+        }
+        catch{
+          Write-Host "folder doesn't exist"
+        }
         # git rm -r --cached $folder_name
         git add .
         git commit -m "Removed folder from repository"
