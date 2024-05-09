@@ -36,4 +36,4 @@ jobs:
           organization: "aviavinashkr"
           repo_name: "rm-folder-delete"
           pat: ${{ secrets.PAT_TOKEN }}
-          folder_name: "src_vars/tstt.txt"
+          folder_name: "src_vars"
