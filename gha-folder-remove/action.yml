@@ -37,14 +37,15 @@ runs:
         try {
         cd ./$repo_name/$folder_name
         Get-ChildItem -Path "./" -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
+        git add .
+        git commit -m "Removed folder from repository"
+        git push origin main
         }
         catch{
           Write-Host "folder doesn't exist"
         }
         # git rm -r --cached $folder_name
-        git add .
-        git commit -m "Removed folder from repository"
-        git push origin main
+
         # $repodeleteuri = "https://api.github.com/repos/$organization/$repo_name/contents/$folder_name"
         # Invoke-RestMethod -Uri $repodeleteuri -Method Delete -Headers @{Authorization = "token $pat"}
 
